@@ -405,7 +405,10 @@ client连到一个节点，如果连接断掉，就会连接到另外一个节�
 | 读100KB   | 2         |
 | 读0.5MB   | 12        |
 
-cache：每次get应该没有自动的client cache机制。
+cache
+
+- 每次get应该没有自动的client cache机制。
+- 如果需要提高读性能，可以使用本地cache，具体做法：本地用一个并发hashmap来存，用curator的nodeCache来watch节点的数据变化，如有变化，更新本地缓存。
 
 ## 数据量
 
